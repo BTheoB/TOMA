@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/ed96843d-a106-4f72-bfdc-4a842d384026/AppServices/subscriptions/ed96843d-a106-4f72-bfdc-4a842d384026/resourceGroups/TOMA/providers/Microsoft.Web/sites/TOMA",
+    "appService.deploySubpath": "."
+}
