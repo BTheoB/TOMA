@@ -3,30 +3,30 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import logo from "./logo.svg";
 import "./App.css";
-// import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
 
 
 // 
 //function de test de connection entre le serveur et le client
 function AppTest() {
-//   const [data, setData] = React.useState(null);
+  const [data, setData] = React.useState(null);
 
-//   React.useEffect(() => {
-//     fetch("/api")
-//       .then((res) => res.json())
-//       .then((data) => setData(data.message));
-//   }, [data]);
+  React.useEffect(() => {
+    fetch("/api")
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
+  }, [data]);
 
 
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>{!data ? "Loading..." : data}</p>
-//       </header>
-//     </div>
-//   );
-// }
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>{!data ? "Loading..." : data}</p>
+      </header>
+    </div>
+  );
+}
 
 
 //Fonction d'appel API pour avoir le nombre de place en temps réel d'un parking 
@@ -243,9 +243,7 @@ function initContext(){
     }
 
 
-  });
-
-  
+  });  
 }
 
 
