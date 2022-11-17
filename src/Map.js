@@ -29,8 +29,8 @@ export class MapContainer extends Component {
          onClick={this.onMapClicked}
         >
    
-          {/* <Marker onClick={this.onMarkerClick}
-                  name={'Current location'} /> */}
+          <Marker onClick={this.onMarkerClick}
+                  name={'Current location'} />
    
           {/* <InfoWindow onClose={this.onInfoWindowClose}>
               <div>
