@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import logo from "./logo.svg";
+import Map from './Map';
 import "./App.css";
 
 //Fonction d'appel API pour avoir le nombre de place en temps réel d'un parking 
@@ -58,6 +59,7 @@ function ApiTRP() {
       <img src={logo} className="App-logo" alt="logo" />
       <p>{content}</p>
     </header>
+    <Map />
   </div>
   );       
 }
