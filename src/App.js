@@ -1,9 +1,11 @@
 import React from "react";
+// import React, {Component} from "react";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import logo from "./logo.svg";
 import "./App.css";
 // import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
 
 
 // function App() {
@@ -62,8 +64,9 @@ function ApiTRP() {
 
   } else if (!isLoaded) {
     content = <div>Chargement...</div>
-  } else {
-    content = 
+  } else
+    {
+      content = 
       <ul>
         {items.map(item => (
           <li key={item["Parking_schema:identifier"]}>
@@ -71,17 +74,16 @@ function ApiTRP() {
           </li>
         ))}
       </ul>
-    
-  }
+    }
 
-  return (<div className="App">
+  return (
+  <div className="App">
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <p>{content}</p>
     </header>
-  </div>);
+  </div>
+  );       
 }
-
-
 
 export default ApiTRP;
