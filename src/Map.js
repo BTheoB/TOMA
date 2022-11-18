@@ -11,11 +11,6 @@ export class MapContainer extends Component {
             width: '100%',
             height: '75%'
           }
-          const containerStyle = {
-            position: 'relative',  
-            width: '100%',
-            height: '100%'
-          }
       return (
         <Map 
          google={this.props.google}
@@ -25,7 +20,6 @@ export class MapContainer extends Component {
             lat: 45.78169339534074,  
             lng: 4.879089080629745 
           }}
-        //  containerStyle={containerStyle}
          onClick={this.onMapClicked}
         >
    
