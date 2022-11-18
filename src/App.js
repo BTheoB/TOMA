@@ -3,7 +3,6 @@ import React from "react";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import logo from "./logo.svg";
-import Map from './Map';
 import "./App.css";
 
 
@@ -83,7 +82,7 @@ function ApiTRP() {
       <img src={logo} className="App-logo" alt="logo" />
       <p>{content}</p>
     </header>
-    <Map />
+    {/* <Map /> */}
   </div>
   );       
 }
@@ -215,7 +214,8 @@ function GetParkingsInfo() {
             {item["identifier"]} {item["address"]["schema:streetAddress"]}
           </li>
         ))}
-      </ul>
+      </ul> 
+      // metre le <Map />
     );
   }
 
