@@ -5,6 +5,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 
+
 //function de test de connection entre le serveur et le client
 function AppTest() {
   const [data, setData] = React.useState(null);
@@ -97,7 +98,7 @@ function GetAdressParking() {
       .then(
         (result) => {
           setIsLoaded(true);
-          setItems(result["values"]);
+          setItems(result["values"]["address"]);
         },
         // Remarque : il faut gérer les erreurs ici plutôt que dans
         // un bloc catch() afin que nous n’avalions pas les exceptions
@@ -118,30 +119,21 @@ function GetAdressParking() {
   } else if (!isLoaded) {
     content = <div>Chargement...</div>
   } else {
-    content =
-      <ul>
-        {items.map(item => (
-          <li key={item["identifier"]}>
-            {item["identifier"]} {item["address"]["schema:streetAddress"]}
-          </li>
-        ))}
-      </ul>
+    content = items
   }
 
-  items.forEach((element) => {
-    formatedparkingsInfo[element["identifier"]] = element;
-  });
+
 
   return (<div className="App">
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
-      {formatedparkingsInfo}
+      {content}
     </header>
   </div>);
 }
 
 //function test d'affichages des info sur les parkings avec leur nombre de place en temps réel
-function getParkingsRealTime(){
+function GetParkingsRealTime() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -175,11 +167,11 @@ function getParkingsRealTime(){
     return items;
   }
 
-  
+
 }
 
-//Donne le tableau d'information complet sur les parkings
-function getParkingsInfo(){  
+//Donne le tableau d'information complet sur tous les parkings
+function GetParkingsInfo() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -192,8 +184,9 @@ function getParkingsInfo(){
       .then(res => res.json())
       .then(
         (result) => {
-          setIsLoaded(true);
-          setItems(result);
+          // console.log(result);
+          localStorage.setItem("resulatParkings", JSON.stringify(result));
+
         },
         // Remarque : il faut gérer les erreurs ici plutôt que dans
         // un bloc catch() afin que nous n’avalions pas les exceptions
@@ -206,12 +199,13 @@ function getParkingsInfo(){
   }, []);
 
   if (error) {
-    return <div>Erreur : {error.message}</div>
+    return error.message
   } else if (!isLoaded) {
-    return <div>Chargement...</div>
-  } else {
-    return items["values"];
+    return "Chargement..."
+  } else{
+    
   }
+
 }
 
 
@@ -221,36 +215,55 @@ function getParkingsInfo(){
 // -  Cette fonction initialise les parkings dans des tableau afin d'éviter de devoir refaire des requêtes à l'API
 //    Le tableau est stocker dans le local storage 
 
-function initContext(){
+function initContext() {
 
-  let parkings = getParkingsRealTime(); //A mettre dans le local storage 
-  
-  let parkingsInfo = getParkingsInfo(); //A mettre dans le local storage 
-  let formatedparkingsInfo = [];  //Même tableau que parkingsInfo mais indexé par le code identifiant des parkings
+  GetParkingsRealTime(); //A mettre dans le local storage 
 
-  parkingsInfo.forEach((element) => {
-    formatedparkingsInfo[element["identifier"]] = element;
-  });
+  var parkingsInfo = GetParkingsInfo(); //A mettre dans le local storage 
+  var formatedparkingsInfo = [];  //Même tableau que parkingsInfo mais indexé par le code identifiant des parkings
+  console.log(parkingsInfo);
 
-  var found = false;
-  
-  parkings.forEach(element => {
-    
-    while(!found){
-      if(element["Parking_schema:identifier"] == parkingsInfo[i])
-    }
+  //Transforme l'indexe des tableau, aide à recuperer les adresses plus simplement
+  // this.parkingsInfo.forEach((element) => {
+  //   formatedparkingsInfo[element["identifier"]] = element;
+  // });
 
 
-  });
+  // parkings.forEach(element => {
 
-  
+  //   element["adresse"] = formatedparkingsInfo[element["Parking_schema:identifier"]]["address"]["schema:streetAddress"];
+
+  // });
+
+
+  return formatedparkingsInfo;
+
 }
 
 
-function App(){
+function App() {
+
+
   initContext();
+
+  var items = localStorage.getItem("resulatParkings");
+  items = JSON.parse(items);
+  console.log(items);
+  return (
+
+    <ul>
+      {items.values.map(item => (
+        <li key={item["identifier"]}>
+          {item["identifier"]} {item["address"]["schema:streetAddress"]}
+        </li>
+      ))}
+    </ul>
+
+
+  );
+  //Pour tester ce que rend la fonction dans les tableaux 
 }
 
 
 
-export default GetAdressParking;
+export default App;
