@@ -184,10 +184,10 @@ function GetParkingsInfo() {
       .then(res => res.json())
       .then(
         (result) => {
-          // console.log(result);
-          localStorage.setItem("resulatParkings", JSON.stringify(result));
-
-        },
+          setIsLoaded(true);
+          setItems(result);
+          localStorage.setItem('resulatParkings', JSON.stringify(result));
+          },
         // Remarque : il faut gérer les erreurs ici plutôt que dans
         // un bloc catch() afin que nous n’avalions pas les exceptions
         // dues à de véritables bugs dans les composants.
@@ -203,7 +203,15 @@ function GetParkingsInfo() {
   } else if (!isLoaded) {
     return "Chargement..."
   } else{
-    
+    return (
+      <ul>
+        {items.values.map(item => (
+          <li key={item["identifier"]}>
+            {item["identifier"]} {item["address"]["schema:streetAddress"]}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
 }
@@ -217,7 +225,7 @@ function GetParkingsInfo() {
 
 function initContext() {
 
-  GetParkingsRealTime(); //A mettre dans le local storage 
+  // GetParkingsRealTime(); //A mettre dans le local storage 
 
   var parkingsInfo = GetParkingsInfo(); //A mettre dans le local storage 
   var formatedparkingsInfo = [];  //Même tableau que parkingsInfo mais indexé par le code identifiant des parkings
@@ -246,11 +254,10 @@ function App() {
 
   initContext();
 
-  var items = localStorage.getItem("resulatParkings");
+  var items = localStorage.getItem('resulatParkings') ? localStorage.getItem('resulatParkings'): [];
   items = JSON.parse(items);
   console.log(items);
   return (
-
     <ul>
       {items.values.map(item => (
         <li key={item["identifier"]}>
@@ -258,12 +265,10 @@ function App() {
         </li>
       ))}
     </ul>
-
-
   );
   //Pour tester ce que rend la fonction dans les tableaux 
 }
 
 
 
-export default App;
+export default GetParkingsInfo;
