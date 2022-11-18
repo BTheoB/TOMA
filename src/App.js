@@ -1,7 +1,9 @@
 import React from "react";
+// import React, {Component} from "react";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import logo from "./logo.svg";
+import Map from './Map';
 import "./App.css";
 
 
@@ -75,12 +77,15 @@ function ApiTRP() {
 
   }
 
-  return (<div className="App">
+  return (
+  <div className="App">
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <p>{content}</p>
     </header>
-  </div>);
+    <Map />
+  </div>
+  );       
 }
 
 //function test d'affichage des infos completes sur les parkings 

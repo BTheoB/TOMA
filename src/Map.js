@@ -7,39 +7,36 @@ export class MapContainer extends Component {
     
     render() {
         const style = {
+            position: 'centre',
             width: '100%',
-            height: '100%'
-          }
-          const containerStyle = {
-            position: 'relative',  
-            width: '100%',
-            height: '100%'
+            height: '75%'
           }
       return (
-        <Map google={this.props.google}
+        <Map 
+         google={this.props.google}
          zoom={10}
          style={style}
          initialCenter={{
             lat: 45.78169339534074,  
             lng: 4.879089080629745 
           }}
-         containerStyle={containerStyle}
          onClick={this.onMapClicked}
         >
    
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'} />
    
-          <InfoWindow onClose={this.onInfoWindowClose}>
+          {/* <InfoWindow onClose={this.onInfoWindowClose}>
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>
               </div>
-          </InfoWindow>
+          </InfoWindow> */}
         </Map>
       );
     }
 }
-   
+
+
   export default GoogleApiWrapper({
     apiKey: ("AIzaSyAlxyNI4iFH0A0NovgIm6XhqEDM5JFZkek")
-  })(Map)
+  })(MapContainer)
