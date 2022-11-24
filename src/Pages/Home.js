@@ -2,7 +2,7 @@ import React from "react";
 // import React, {Component} from "react";
 import { useState } from 'react';
 import { useEffect } from 'react';
-import Map from "./Map";
+import Map from "../Components/Map";
 
 
 
