@@ -111,8 +111,63 @@ function GetInfoParking(id) {
 
 }
 
+
+function getBothApi(){
+
+  const [isLoadedAPI1, setIsLoaded1] = useState(false);
+  const [isLoadedAPI2, setIsLoaded2] = useState(false);
+
+  useEffect(() => {
+    fetch("https://download.data.grandlyon.com/files/rdata/lpa_mobilite.donnees/parking_temps_reel.json")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded1(true);
+          setItems(result);
+          localStorage.setItem('resulatParkingsRealTime', JSON.stringify(result));
+        },
+        // Remarque : il faut gérer les erreurs ici plutôt que dans
+        // un bloc catch() afin que nous n’avalions pas les exceptions
+        // dues à de véritables bugs dans les composants.
+        (error) => {
+          setIsLoaded1(true);
+          setError(error);
+        }
+      );
+  }, []);
+
+  useEffect(() => {
+    fetch("https://download.data.grandlyon.com/ws/rdata/lpa_mobilite.parking_lpa_2_0_0/all.json?maxfeatures=100&start=1")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded2(true);
+          setItems(result);
+          localStorage.setItem('resulatParkingsInfo', JSON.stringify(result));
+          setTabParking(result);
+        },
+        // Remarque : il faut gérer les erreurs ici plutôt que dans
+        // un bloc catch() afin que nous n’avalions pas les exceptions
+        // dues à de véritables bugs dans les composants.
+        (error) => {
+          setIsLoaded2(true);
+          setError(error);
+        }
+      )
+  }, []);
+
+
+
+  if (isLoadedAPI1 && isLoadedAPI2) {
+    return true
+  }
+  
+
+}
+
 //function test d'affichages des info sur les parkings avec leur nombre de place en temps réel
 function GetParkingsRealTime() {
+  
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -136,7 +191,7 @@ function GetParkingsRealTime() {
           setIsLoaded(true);
           setError(error);
         }
-      )
+      );
   }, []);
 
   if (error) {
@@ -186,6 +241,9 @@ function GetParkingsInfo() {
   } else {
     return (
       <ul>
+        <li>
+          'c est prêt !'
+        </li>
         {items.values.map(item => (
           <li key={item["identifier"]}>
             {item["identifier"]} {item["address"]["schema:streetAddress"]}
@@ -207,27 +265,13 @@ function GetParkingsInfo() {
 //    Le tableau est stocker dans le local storage 
 
 function initContext() {
+  const [isLoaded, isLoadedAPI1] = useState([]);
+  const [isLoaded2, isLoadedAPI2] = useState([]);
 
-  // GetParkingsRealTime(); //A mettre dans le local storage 
+  let isLoaded = GetParkingsInfo();
+  let isLoaded2 = GetParkingsRealTime();
 
-  var parkingsInfo = GetParkingsInfo(); //A mettre dans le local storage 
-  var formatedparkingsInfo = [];  //Même tableau que parkingsInfo mais indexé par le code identifiant des parkings
-  console.log(parkingsInfo);
-
-  //Transforme l'indexe des tableau, aide à recuperer les adresses plus simplement
-  // this.parkingsInfo.forEach((element) => {
-  //   formatedparkingsInfo[element["identifier"]] = element;
-  // });
-
-
-  // parkings.forEach(element => {
-
-  //   element["adresse"] = formatedparkingsInfo[element["Parking_schema:identifier"]]["address"]["schema:streetAddress"];
-
-  // });
-
-
-  return formatedparkingsInfo;
+  if()
 
 }
 
@@ -254,4 +298,4 @@ function App() {
 
 
 
-export default GetParkingsInfo;
+export default initContext;
