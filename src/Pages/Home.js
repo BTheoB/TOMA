@@ -2,7 +2,7 @@ import React from "react";
 // import React, {Component} from "react";
 import { useState } from 'react';
 import { useEffect } from 'react';
-import Map from "../Components/Map";
+import MapContainer from "../Components/Map";
 
 
 
@@ -47,7 +47,7 @@ function Home() {
               {item["identifier"]} {item["address"]["schema:streetAddress"]}
             </li>
           ))}
-          <Map />
+          <MapContainer />
         </ul> 
       );
     }
