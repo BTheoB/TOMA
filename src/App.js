@@ -7,25 +7,25 @@ import NavBar from './Components/NavBar';
 
 
 //function de test de connection entre le serveur et le client
-function AppTest() {
-  const [data, setData] = React.useState(null);
+// function AppTest() {
+//   const [data, setData] = React.useState(null);
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, [data]);
+//   React.useEffect(() => {
+//     fetch("/api")
+//       .then((res) => res.json())
+//       .then((data) => setData(data.message));
+//   }, [data]);
 
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
-    </div>
-  );
-}
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <img src={logo} className="App-logo" alt="logo" />
+//         <p>{!data ? "Loading..." : data}</p>
+//       </header>
+//     </div>
+//   );
+// }
 
 //  Cette fonction créer un tableau tel que tab(key,value) nommé FormatedTabParkingAdress 
 //  avec la key étant l'identifier (ex "L23DL4") et la valeur etant les informations sur le parking
@@ -51,58 +51,58 @@ function GetInfoParking(id) {
 }
 
 
-function getBothApi() {
+// function GetBothApi() {
 
-  const [isLoadedAPI1, setIsLoaded1] = useState(false);
-  const [isLoadedAPI2, setIsLoaded2] = useState(false);
+//   const [isLoadedAPI1, setIsLoaded1] = useState(false);
+//   const [isLoadedAPI2, setIsLoaded2] = useState(false);
 
-  useEffect(() => {
-    fetch("https://download.data.grandlyon.com/files/rdata/lpa_mobilite.donnees/parking_temps_reel.json")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded1(true);
-          setItems(result);
-          localStorage.setItem('resulatParkingsRealTime', JSON.stringify(result));
-        },
-        // Remarque : il faut gérer les erreurs ici plutôt que dans
-        // un bloc catch() afin que nous n’avalions pas les exceptions
-        // dues à de véritables bugs dans les composants.
-        (error) => {
-          setIsLoaded1(true);
-          setError(error);
-        }
-      );
-  }, []);
+//   useEffect(() => {
+//     fetch("https://download.data.grandlyon.com/files/rdata/lpa_mobilite.donnees/parking_temps_reel.json")
+//       .then(res => res.json())
+//       .then(
+//         (result) => {
+//           setIsLoaded1(true);
+//           setItems(result);
+//           localStorage.setItem('resulatParkingsRealTime', JSON.stringify(result));
+//         },
+//         // Remarque : il faut gérer les erreurs ici plutôt que dans
+//         // un bloc catch() afin que nous n’avalions pas les exceptions
+//         // dues à de véritables bugs dans les composants.
+//         (error) => {
+//           setIsLoaded1(true);
+//           setError(error);
+//         }
+//       );
+//   }, []);
 
-  useEffect(() => {
-    fetch("https://download.data.grandlyon.com/ws/rdata/lpa_mobilite.parking_lpa_2_0_0/all.json?maxfeatures=100&start=1")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded2(true);
-          setItems(result);
-          localStorage.setItem('resulatParkingsInfo', JSON.stringify(result));
-          setTabParking(result);
-        },
-        // Remarque : il faut gérer les erreurs ici plutôt que dans
-        // un bloc catch() afin que nous n’avalions pas les exceptions
-        // dues à de véritables bugs dans les composants.
-        (error) => {
-          setIsLoaded2(true);
-          setError(error);
-        }
-      )
-  }, []);
-
-
-
-  if (isLoadedAPI1 && isLoadedAPI2) {
-    return true
-  }
+//   useEffect(() => {
+//     fetch("https://download.data.grandlyon.com/ws/rdata/lpa_mobilite.parking_lpa_2_0_0/all.json?maxfeatures=100&start=1")
+//       .then(res => res.json())
+//       .then(
+//         (result) => {
+//           setIsLoaded2(true);
+//           setItems(result);
+//           localStorage.setItem('resulatParkingsInfo', JSON.stringify(result));
+//           setTabParking(result);
+//         },
+//         // Remarque : il faut gérer les erreurs ici plutôt que dans
+//         // un bloc catch() afin que nous n’avalions pas les exceptions
+//         // dues à de véritables bugs dans les composants.
+//         (error) => {
+//           setIsLoaded2(true);
+//           setError(error);
+//         }
+//       )
+//   }, []);
 
 
-}
+
+//   if (isLoadedAPI1 && isLoadedAPI2) {
+//     return true
+//   }
+
+
+// }
 
 //function test d'affichages des info sur les parkings avec leur nombre de place en temps réel
 function GetParkingsRealTime() {
@@ -208,6 +208,9 @@ function initContext() {
 
 
 function App() {
+
+  GetParkingsInfo();
+  GetParkingsRealTime();
   return <div className="App">
     <NavBar />
     <Routes>
@@ -219,9 +222,7 @@ function App() {
 }
 
 
-function App() {
-
-
+function App2() {
   initContext();
 
   var items = localStorage.getItem('resulatParkingsInfo') ? localStorage.getItem('resulatParkingsInfo') : [];
@@ -241,5 +242,5 @@ function App() {
 
 
 
-export default initContext;
-// export default App;
+// export default initContext;
+export default App;
