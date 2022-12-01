@@ -223,24 +223,35 @@ function App() {
 
 
 function App2() {
-  initContext();
 
-  var items = localStorage.getItem('resulatParkingsInfo') ? localStorage.getItem('resulatParkingsInfo') : [];
-  items = JSON.parse(items);
-  console.log(items);
-  return (
-    <ul>
-      {items.values.map(item => (
-        <li key={item["identifier"]}>
-          {item["identifier"]} {item["address"]["schema:streetAddress"]}
-        </li>
-      ))}
-    </ul>
-  );
+  GetParkingsInfo();
+  GetParkingsRealTime();
+
+  var items = localStorage.getItem('resulatParkingsInfo');
+
+  if(localStorage.getItem('resulatParkingsInfo') != null){
+    items = JSON.parse(items);
+  
+    console.log(items);
+    return (
+      <ul>
+        {items.values.map(item => (
+          <li key={item["identifier"]}>
+            {item["identifier"]} {item["address"]["schema:streetAddress"]}
+          </li>
+        ))}
+      </ul>
+    );
+  }else{
+    return (
+      "Chargement..."
+    );
+  }
+  
   //Pour tester ce que rend la fonction dans les tableaux 
 }
 
 
 
 // export default initContext;
-export default App;
+export default App2;

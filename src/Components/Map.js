@@ -22,7 +22,7 @@ export class MapContainer extends Component {
           }}
          onClick={this.onMapClicked}
         >
-   
+          
           <Marker onClick={this.onMarkerClick}
                   name={'Current location'} />
    
