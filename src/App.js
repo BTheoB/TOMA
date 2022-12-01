@@ -1,11 +1,9 @@
-import React from "react";
-// import React, {Component} from "react";
-import { useState } from 'react';
-import { useEffect } from 'react';
-import logo from "./logo.svg";
-import Map from './Map';
+import { React, useState, useEffect, Component } from 'react';
 import "./App.css";
-
+import Home from "./Components/Home";
+import Connection from "./Components/Connection";
+import { Route, Routes } from 'react-router-dom';
+import NavBar from './Components/NavBar';
 
 
 //function de test de connection entre le serveur et le client
@@ -29,70 +27,11 @@ function AppTest() {
   );
 }
 
-
-//Fonction d'appel API pour avoir le nombre de place en temps réel d'un parking 
-function ApiTRP() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
-
-  // Remarque : le tableau vide de dépendances [] indique
-  // que useEffect ne s’exécutera qu’une fois, un peu comme
-  // componentDidMount()
-  useEffect(() => {
-    fetch("https://download.data.grandlyon.com/files/rdata/lpa_mobilite.donnees/parking_temps_reel.json")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },
-        // Remarque : il faut gérer les erreurs ici plutôt que dans
-        // un bloc catch() afin que nous n’avalions pas les exceptions
-        // dues à de véritables bugs dans les composants.
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, []);
-
-  let content = ' ';
-
-
-  if (error) {
-    content = <div>Erreur : {error.message}</div>
-
-  } else if (!isLoaded) {
-    content = <div>Chargement...</div>
-  } else {
-    content =
-      <ul>
-        {items.map(item => (
-          <li key={item["Parking_schema:identifier"]}>
-            {item["mv:currentValue"]} {item["Parking_schema:name"]} {item["dct:date"]}
-          </li>
-        ))}
-      </ul>
-
-  }
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{content}</p>
-      </header>
-      <Map />
-    </div>
-  );
-}
-
 //  Cette fonction créer un tableau tel que tab(key,value) nommé FormatedTabParkingAdress 
 //  avec la key étant l'identifier (ex "L23DL4") et la valeur etant les informations sur le parking
 //  Cela permet de retrouver plus facilement les informations d'un parking
-function setTabParking(parkingsInfo){
-  
+function setTabParking(parkingsInfo) {
+
   let formatedparkingsInfo = {};
   parkingsInfo.values.forEach((element) => {                   //Créer un tableau permettant d'acceder directement à l'élement voulue par ca clé
     formatedparkingsInfo[element["identifier"]] = element;
@@ -104,7 +43,7 @@ function setTabParking(parkingsInfo){
 
 //fonction qui rend les information d'un parking selon son Identifiant 
 function GetInfoParking(id) {
-  
+
   let FormatedTabParkingAdress = localStorage.getItem('FormatedTabParkingInfo');
   // Il faut surment parse la string FormatedTabParkingAdress
   return FormatedTabParkingAdress[id];
@@ -112,7 +51,7 @@ function GetInfoParking(id) {
 }
 
 
-function getBothApi(){
+function getBothApi() {
 
   const [isLoadedAPI1, setIsLoaded1] = useState(false);
   const [isLoadedAPI2, setIsLoaded2] = useState(false);
@@ -161,13 +100,13 @@ function getBothApi(){
   if (isLoadedAPI1 && isLoadedAPI2) {
     return true
   }
-  
+
 
 }
 
 //function test d'affichages des info sur les parkings avec leur nombre de place en temps réel
 function GetParkingsRealTime() {
-  
+
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
@@ -193,15 +132,6 @@ function GetParkingsRealTime() {
         }
       );
   }, []);
-
-  if (error) {
-    return <div>Erreur : {error.message}</div>
-  } else if (!isLoaded) {
-    return <div>Chargement...</div>
-  } else {
-    return items;
-  }
-
 
 }
 
@@ -242,7 +172,7 @@ function GetParkingsInfo() {
     return (
       <ul>
         <li>
-          'c est prêt !'
+          <p>"c est prêt !"</p>
         </li>
         {items.values.map(item => (
           <li key={item["identifier"]}>
@@ -265,14 +195,27 @@ function GetParkingsInfo() {
 //    Le tableau est stocker dans le local storage 
 
 function initContext() {
-  const [isLoaded, isLoadedAPI1] = useState([]);
-  const [isLoaded2, isLoadedAPI2] = useState([]);
+  // const [isLoaded, isLoadedAPI1] = useState([]);
+  // const [isLoaded2, isLoadedAPI2] = useState([]);
 
-  let isLoaded = GetParkingsInfo();
-  let isLoaded2 = GetParkingsRealTime();
+  // let isLoaded = GetParkingsInfo();
+  // let isLoaded2 = GetParkingsRealTime();
 
-  if()
+  // if ()
 
+ }
+
+
+
+function App() {
+  return <div className="App">
+    <NavBar />
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/Connection" element={<Connection />} />
+    </Routes>
+
+  </div>
 }
 
 
@@ -299,3 +242,4 @@ function App() {
 
 
 export default initContext;
+// export default App;
