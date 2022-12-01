@@ -40,15 +40,18 @@ function Home() {
     } else if (!isLoaded) {
       return "Chargement..."
     } else{
+      console.log(items);
       return (
+        <div>
         <ul>
           {items.values.map(item => (
             <li key={item["identifier"]}>
               {item["identifier"]} {item["address"]["schema:streetAddress"]}
             </li>
           ))}
-          <MapContainer />
         </ul> 
+          <MapContainer />
+        </div>
       );
     }
   
