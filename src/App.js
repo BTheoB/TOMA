@@ -41,68 +41,8 @@ function setTabParking(parkingsInfo) {
 
 }
 
-//fonction qui rend les information d'un parking selon son Identifiant 
-function GetInfoParking(id) {
-
-  let FormatedTabParkingAdress = localStorage.getItem('FormatedTabParkingInfo');
-  // Il faut surment parse la string FormatedTabParkingAdress
-  return FormatedTabParkingAdress[id];
-
-}
 
 
-// function GetBothApi() {
-
-//   const [isLoadedAPI1, setIsLoaded1] = useState(false);
-//   const [isLoadedAPI2, setIsLoaded2] = useState(false);
-
-//   useEffect(() => {
-//     fetch("https://download.data.grandlyon.com/files/rdata/lpa_mobilite.donnees/parking_temps_reel.json")
-//       .then(res => res.json())
-//       .then(
-//         (result) => {
-//           setIsLoaded1(true);
-//           setItems(result);
-//           localStorage.setItem('resulatParkingsRealTime', JSON.stringify(result));
-//         },
-//         // Remarque : il faut gérer les erreurs ici plutôt que dans
-//         // un bloc catch() afin que nous n’avalions pas les exceptions
-//         // dues à de véritables bugs dans les composants.
-//         (error) => {
-//           setIsLoaded1(true);
-//           setError(error);
-//         }
-//       );
-//   }, []);
-
-//   useEffect(() => {
-//     fetch("https://download.data.grandlyon.com/ws/rdata/lpa_mobilite.parking_lpa_2_0_0/all.json?maxfeatures=100&start=1")
-//       .then(res => res.json())
-//       .then(
-//         (result) => {
-//           setIsLoaded2(true);
-//           setItems(result);
-//           localStorage.setItem('resulatParkingsInfo', JSON.stringify(result));
-//           setTabParking(result);
-//         },
-//         // Remarque : il faut gérer les erreurs ici plutôt que dans
-//         // un bloc catch() afin que nous n’avalions pas les exceptions
-//         // dues à de véritables bugs dans les composants.
-//         (error) => {
-//           setIsLoaded2(true);
-//           setError(error);
-//         }
-//       )
-//   }, []);
-
-
-
-//   if (isLoadedAPI1 && isLoadedAPI2) {
-//     return true
-//   }
-
-
-// }
 
 //function test d'affichages des info sur les parkings avec leur nombre de place en temps réel
 function GetParkingsRealTime() {
@@ -151,7 +91,6 @@ function GetParkingsInfo() {
         (result) => {
           setIsLoaded(true);
           setItems(result);
-          localStorage.setItem('resulatParkingsInfo', JSON.stringify(result));
           setTabParking(result);
         },
         // Remarque : il faut gérer les erreurs ici plutôt que dans
@@ -187,30 +126,13 @@ function GetParkingsInfo() {
 
 
 
-
-
-
-// Initialise le contexte de l'application : 
-// -  Cette fonction initialise les parkings dans des tableau afin d'éviter de devoir refaire des requêtes à l'API
-//    Le tableau est stocker dans le local storage 
-
-function initContext() {
-  // const [isLoaded, isLoadedAPI1] = useState([]);
-  // const [isLoaded2, isLoadedAPI2] = useState([]);
-
-  // let isLoaded = GetParkingsInfo();
-  // let isLoaded2 = GetParkingsRealTime();
-
-  // if ()
-
- }
-
-
-
 function App() {
 
+  //Initialise le contexte des données
+  //Place dans le localStorage les données des parkings via l'api
   GetParkingsInfo();
   GetParkingsRealTime();
+  //
   return <div className="App">
     <NavBar />
     <Routes>
@@ -254,4 +176,4 @@ function App2() {
 
 
 // export default initContext;
-export default App2;
+export default App;
