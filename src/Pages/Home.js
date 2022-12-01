@@ -2,7 +2,7 @@ import React from "react";
 // import React, {Component} from "react";
 import { useState } from 'react';
 import { useEffect } from 'react';
-import Map from "./Map";
+import MapContainer from "../Components/Map";
 
 
 
@@ -40,15 +40,18 @@ function Home() {
     } else if (!isLoaded) {
       return "Chargement..."
     } else{
+      console.log(items);
       return (
+        <div>
         <ul>
           {items.values.map(item => (
             <li key={item["identifier"]}>
               {item["identifier"]} {item["address"]["schema:streetAddress"]}
             </li>
           ))}
-          <Map />
         </ul> 
+          <MapContainer />
+        </div>
       );
     }
   

@@ -22,10 +22,19 @@ export class MapContainer extends Component {
           }}
          onClick={this.onMapClicked}
         >
-          
-          <Marker onClick={this.onMarkerClick}
-                  name={'Current location'} />
    
+          {/* <Marker onClick={this.onMarkerClick}
+                  name={'Current location'} /> */}
+          <Marker position = {{lat:45.768522, lng:4.83773}} />
+          <Marker position = {{lat:45.768241, lng:4.836341}} />
+          <Marker position = {{lat:45.7696325, lng:4.8339403}} />
+          <Marker position = {{lat:45.7696325, lng:4.8339403}} />
+          <Marker position = {{lat:45.770857, lng:4.832605}} />
+          <Marker position = {{lat:45.770791, lng:4.8326}} />
+          <Marker position = {{lat:45.767543, lng:4.832217}} />
+          <Marker position = {{lat:45.767193, lng:4.833933}} />
+          <Marker position = {{lat:45.75653, lng:4.83587}} />
+          <Marker position = {{lat:45.756292, lng:4.834068}} />
           {/* <InfoWindow onClose={this.onInfoWindowClose}>
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>

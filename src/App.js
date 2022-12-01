@@ -1,8 +1,8 @@
 import { React, useState, useEffect, Component } from 'react';
 import "./App.css";
-import Home from "./Components/Home";
-import Connection from "./Components/Connection";
-import { Route, Routes } from 'react-router-dom';
+import Home from "./Pages/Home";
+import Connection from "./Pages/Connection";
+import {Route, Routes} from 'react-router-dom';
 import NavBar from './Components/NavBar';
 
 
