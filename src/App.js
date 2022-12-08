@@ -134,44 +134,44 @@ function App() {
   GetParkingsRealTime();
   //
   return <div className="App">
-    <NavBar />
-    <Routes>
-      <Route exact path="/" element={<Home />} />
-      <Route exact path="/Connection" element={<Connection />} />
-    </Routes>
+     <NavBar />
+     <Routes>
+       <Route exact path="/" element={<Home />} />
+       <Route exact path="/Connection" element={<Connection />} />
+     </Routes>
 
   </div>
+  
 }
 
+// function App2() {
 
-function App2() {
+//   GetParkingsInfo();
+//   GetParkingsRealTime();
 
-  GetParkingsInfo();
-  GetParkingsRealTime();
+//   var items = localStorage.getItem('resulatParkingsInfo');
 
-  var items = localStorage.getItem('resulatParkingsInfo');
-
-  if(localStorage.getItem('resulatParkingsInfo') != null){
-    items = JSON.parse(items);
+//   if(localStorage.getItem('resulatParkingsInfo') != null){
+//     items = JSON.parse(items);
   
-    console.log(items);
-    return (
-      <ul>
-        {items.values.map(item => (
-          <li key={item["identifier"]}>
-            {item["identifier"]} {item["address"]["schema:streetAddress"]}
-          </li>
-        ))}
-      </ul>
-    );
-  }else{
-    return (
-      "Chargement..."
-    );
-  }
+//     console.log(items);
+//     return (
+//       <ul>
+//         {items.values.map(item => (
+//           <li key={item["identifier"]}>
+//             {item["identifier"]} {item["address"]["schema:streetAddress"]}
+//           </li>
+//         ))}
+//       </ul>
+//     );
+//   }else{
+//     return (
+//       "Chargement..."
+//     );
+//   }
   
-  //Pour tester ce que rend la fonction dans les tableaux 
-}
+//   //Pour tester ce que rend la fonction dans les tableaux 
+// }
 
 
 
