@@ -50,6 +50,14 @@ export class MapContainer extends Component {
 //En cours
 function parkingInfoPopUp(id) {
 
+
+  //Choses a afficher : 
+  //Le nombre de place dispo en temps réel => appel ajax
+  //L'adresse
+  //Capacité total
+  //Nom
+  //Photo
+
   if (localStorage.getItem('resulatParkingsRealTime') != null && localStorage.getItem('FormatedTabParkingInfo') != null) {
 
     let parkingsInfo = JSON.parse(localStorage.getItem('FormatedTabParkingInfo'));
