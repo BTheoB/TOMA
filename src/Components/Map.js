@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { useState } from 'react';
 import { useEffect } from 'react';
+import 'bulma/css/bulma.min.css';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 var parse = require('html-react-parser');
+
 
 export class MapContainer extends Component {
 
@@ -15,7 +17,7 @@ export class MapContainer extends Component {
       margin: '20px',
     }
     return (
-      <div className="is-flex">
+      <div>
         <div className="block">
           <Map
             google={this.props.google}

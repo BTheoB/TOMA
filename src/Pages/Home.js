@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import MapContainer from "../Components/Map";
 import "../App";
+import 'bulma/css/bulma.min.css';
+import Card from "../Components/card";
 
 
 
@@ -22,8 +24,15 @@ function getInfoParking(id) {
 function Home() {
     
       return (
-        <div>
-          <MapContainer />
+        <div className="block">
+          <div className="columns">
+            <div className="column">
+              <MapContainer />
+            </div>
+            <div className="column is-4">
+              <Card />
+            </div>
+          </div>
         </div>
       );
     }
