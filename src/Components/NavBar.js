@@ -1,46 +1,44 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import 'bulma/css/bulma.min.css';
 
 
 function NavBar(){
     return(
-        <div className="App">
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
-                    <a class="navbar-item">
-                        <img 
-                            src="..\TOMA.png" width="112" height="28"> 
-                        </img>
-                    </a>
-
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    </a>
-                </div>
-            
-                <div id="navbarBasicExample" class="navbar-menu">
-                    <div class="navbar-start">
+        <div className="box has-background-primary-light">
+            <div className="Nav has-background-primary-light">
+                <nav class="navbar has-background-primary-light" role="navigation" aria-label="main navigation">
+                    <div className="navbar-brand">
                         <a class="navbar-item">
-                            <Link to="/">Home</Link>
+                            {/* <figure class="image is-128x128">
+                                <img src="https://bulma.io/images/placeholders/128x128.png"> </img>
+                            </figure>  */}
+                            
                         </a>
                     </div>
+                
+                    <div id="navbarBasicExample" className="navbar-menu">
+                        <div className="navbar-start">
+                            <a class="navbar-item">
+                                <strong><Link to="/">Home</Link> </strong>
+                            </a>
+                        </div>
 
-                    <div class="navbar-end">
-                        <div class="navbar-item">
-                            <div class="buttons">
-                                <a class="button is-primary">
-                                    <strong><Link to="/Connection">Sign up</Link></strong>
-                                </a>
-                                <a class="button is-light">
-                                    Log in
-                                </a>
+                        <div className="navbar-end">
+                            <div className="navbar-item">
+                                <div className="buttons">
+                                    <a class="button is-primary">
+                                        <strong><Link to="/Connection">Sign up</Link></strong>
+                                    </a>
+                                    <a class="button is-light">
+                                        Log in
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
         </div>
 
 

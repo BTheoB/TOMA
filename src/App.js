@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Connection from "./Pages/Connection";
 import {Route, Routes} from 'react-router-dom';
 import NavBar from './Components/NavBar';
+import 'bulma/css/bulma.min.css';
 
 
 //function de test de connection entre le serveur et le client
