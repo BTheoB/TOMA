@@ -22,7 +22,6 @@ function getInfoParking(id) {
 
 //Donne le tableau d'information complet sur tous les parkings
 function Home() {
-    
       return (
         <div className="block">
           <div className="columns">
