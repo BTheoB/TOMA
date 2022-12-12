@@ -1,10 +1,16 @@
 import { React, useState, useEffect, Component } from 'react';
 import "./App.css";
 import Home from "./Pages/Home";
-import Connection from "./Pages/Connection";
 import {Route, Routes} from 'react-router-dom';
 import NavBar from './Components/NavBar';
 import 'bulma/css/bulma.min.css';
+import axios from "axios";
+import Login from "./Pages/sign_in/components/Login";
+
+
+
+// import { store } from './Pages/sign_in/app/store';
+// import { Provider } from 'react-redux';
 
 
 //function de test de connection entre le serveur et le client
@@ -133,16 +139,16 @@ function App() {
   //Place dans le localStorage les données des parkings via l'api
   GetParkingsInfo();
   GetParkingsRealTime();
+  axios.defaults.withCredentials = true;
+
   //
   return <div className="App">
      <NavBar />
      <Routes>
        <Route exact path="/" element={<Home />} />
-       <Route exact path="/Connection" element={<Connection />} />
+       <Route path="/Connection" element={<Login />} />
      </Routes>
-
   </div>
-  
 }
 
 // function App2() {
