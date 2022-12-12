@@ -13,9 +13,6 @@ export class Card extends Component {
 
     render() {
 
-        console.log(this.props.currentParking);
-
-
         return (
             <div class="card">
                 <header class="card-header">

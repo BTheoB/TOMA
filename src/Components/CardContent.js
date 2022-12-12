@@ -31,7 +31,6 @@ function CardContent({ currentParking }) {
                 (result) => {
                     setIsLoaded(true);
 
-
                     //Ici on viens faire la requête à l'api et on recupère les informations de places en temps réel du bon parking
                     var i = 0;
                     while (i < result.length && result[i]["Parking_schema:identifier"] != currentParking) {
