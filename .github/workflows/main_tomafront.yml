@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'TOMAFront'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_58E2643F91ED4CB387F07D0707419239 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6E2C3CA6668843E09AA99D4275A98DB8 }}
           package: .
