@@ -6,6 +6,7 @@ import 'bulma/css/bulma.min.css';
 import axios from "axios";
 import Login from "./Pages/sign_in/components/Login";
 import ConnectedHome from './Pages/ConnectedHome';
+import SignUp from './Pages/sign_up/components/SignUp';
 
 
 
@@ -148,6 +149,8 @@ function App() {
        <Route exact path="/" element={<Home />} />
        <Route path="/Connection" element={<Login />} />
        <Route path="/ConnectedHome" element={<ConnectedHome />} />
+       <Route path="/SignUp" element={<SignUp />} />
+
      </Routes>
   </div>
 }

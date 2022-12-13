@@ -39,6 +39,9 @@ function ConnectedNavBar(){
                     </div>
                     <div id="navbarBasicExample" className="navbar-menu">
                         <div className="navbar-end">
+                                <h2 className="subtitle">
+                                 Welcome !<strong>{user && user.name}</strong>
+                                </h2>
                             <div className="navbar-item">
                             <div className="buttons">
                                 <button onClick={logout} className="button is-light">
