@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import Layout from "./Layout";
-import Welcome from "../components/Welcome";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getMe } from "../features/authSlice";
-import Home from "../../Home";
+import ConnectedHome from "../../ConnectedHome";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -23,7 +22,7 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <Home />
+      <ConnectedHome />
     </Layout>
   );
 };

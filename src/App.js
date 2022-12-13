@@ -1,11 +1,11 @@
 import { React, useState, useEffect, Component } from 'react';
-import "./App.css";
 import Home from "./Pages/Home";
 import {Route, Routes} from 'react-router-dom';
 import NavBar from './Components/NavBar';
 import 'bulma/css/bulma.min.css';
 import axios from "axios";
 import Login from "./Pages/sign_in/components/Login";
+import ConnectedHome from './Pages/ConnectedHome';
 
 
 
@@ -143,10 +143,11 @@ function App() {
 
   //
   return <div className="App">
-     <NavBar />
+     
      <Routes>
        <Route exact path="/" element={<Home />} />
        <Route path="/Connection" element={<Login />} />
+       <Route path="/ConnectedHome" element={<ConnectedHome />} />
      </Routes>
   </div>
 }

@@ -14,7 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user || isSuccess) {
-      navigate("/");
+      navigate("/ConnectedHome");
     }
     dispatch(reset());
   }, [user, isSuccess, dispatch, navigate]);

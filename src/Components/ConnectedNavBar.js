@@ -7,12 +7,16 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 
 
-function NavBar(){
+function ConnectedNavBar(){
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
 
-  
+  const logout = () => {
+    dispatch(LogOut());
+    dispatch(reset());
+    navigate("/");
+  };
     return(
         <div className="box has-background-primary-light">
             <div className="Nav has-background-primary-light">
@@ -29,20 +33,18 @@ function NavBar(){
                     <div id="navbarBasicExample" className="navbar-menu">
                         <div className="navbar-start">
                             <a class="navbar-item">
-                                <strong><Link to="/">Home</Link> </strong>
+                                <strong><Link to="/ConnectedHome">Home</Link> </strong>
                             </a>
                         </div>
-
+                    </div>
+                    <div id="navbarBasicExample" className="navbar-menu">
                         <div className="navbar-end">
                             <div className="navbar-item">
-                                <div className="buttons">
-                                    <a class="button is-primary">
-                                        <strong><Link to="/Connection">Log in</Link></strong>
-                                    </a>
-                                    {/* <a class="button is-light">
-                                        Log in
-                                    </a> */}
-                                </div>
+                            <div className="buttons">
+                                <button onClick={logout} className="button is-light">
+                                Log out
+                                </button>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -61,4 +63,4 @@ function NavBar(){
     );
 }
 
-export default NavBar;
+export default ConnectedNavBar;

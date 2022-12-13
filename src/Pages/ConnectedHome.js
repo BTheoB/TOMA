@@ -6,7 +6,7 @@ import MapContainer from "../Components/Map";
 import "../App";
 import 'bulma/css/bulma.min.css';
 import Card from "../Components/card";
-import NavBar from "../Components/NavBar";
+import ConnectedNavBar from "../Components/ConnectedNavBar";
 
 
 
@@ -23,10 +23,10 @@ function getInfoParking(id) {
 
 
 //Donne le tableau d'information complet sur tous les parkings
-function Home() {
+function ConnectedHome() {
       return (
         <div className="block">
-          <NavBar />
+          <ConnectedNavBar />
           <div className="columns">
             <div className="column">
               <MapContainer />
@@ -40,4 +40,4 @@ function Home() {
     }
   
 
-export default Home;
+export default ConnectedHome;
