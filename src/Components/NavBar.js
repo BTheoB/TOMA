@@ -38,6 +38,9 @@ function NavBar(){
                         <div className="navbar-end">
                             <div className="navbar-item">
                                 <div className="buttons">
+                                <a class="button is-primary">
+                                        <strong><Link to="/SignUp">Sign up</Link></strong>
+                                    </a>
                                     <a class="button is-primary">
                                         <strong><Link to="/Connection">Log in</Link></strong>
                                     </a>

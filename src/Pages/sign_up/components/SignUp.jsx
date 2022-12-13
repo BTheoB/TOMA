@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { LoginUser, reset } from "../features/authSlice";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
 
-const FormEditUser = () => {
+
+const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,35 +13,19 @@ const FormEditUser = () => {
   const [role, setRole] = useState("");
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
-  const { id } = useParams();
 
-  useEffect(() => {
-    const getUserById = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/users/${id}`);
-        setName(response.data.name);
-        setEmail(response.data.email);
-        setRole(response.data.role);
-      } catch (error) {
-        if (error.response) {
-          setMsg(error.response.data.msg);
-        }
-      }
-    };
-    getUserById();
-  }, [id]);
 
-  const updateUser = async (e) => {
+  const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://localhost:5000/users/${id}`, {
+      await axios.post("http://localhost:5000/users", {
         name: name,
         email: email,
         password: password,
         confPassword: confPassword,
         role: role,
       });
-      navigate("/users");
+      navigate("/ConnectedHome");
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -48,11 +35,11 @@ const FormEditUser = () => {
   return (
     <div>
       <h1 className="title">Users</h1>
-      <h2 className="subtitle">Update User</h2>
+      <h2 className="subtitle">Add New User</h2>
       <div className="card is-shadowless">
         <div className="card-content">
           <div className="content">
-            <form onSubmit={updateUser}>
+            <form onSubmit={saveUser}>
               <p className="has-text-centered">{msg}</p>
               <div className="field">
                 <label className="label">Name</label>
@@ -119,7 +106,7 @@ const FormEditUser = () => {
               <div className="field">
                 <div className="control">
                   <button type="submit" className="button is-success">
-                    Update
+                    Save
                   </button>
                 </div>
               </div>
@@ -131,4 +118,4 @@ const FormEditUser = () => {
   );
 };
 
-export default FormEditUser;
+export default SignUp;
