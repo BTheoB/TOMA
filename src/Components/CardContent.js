@@ -61,7 +61,7 @@ function CardContent({ currentParking }) {
         //Capacité total
         //Nom
         //Photo
-        var infoP = parkingInfo(currentParking);
+        let infoP = parkingInfo(currentParking);
 
         return <div class="content">
 
