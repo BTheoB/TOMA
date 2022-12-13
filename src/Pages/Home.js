@@ -6,6 +6,7 @@ import MapContainer from "../Components/Map";
 import "../App";
 import 'bulma/css/bulma.min.css';
 import Card from "../Components/card";
+import { BarDeRecherche } from "../Components/BarDeRecherche";
 
 
 
@@ -22,20 +23,22 @@ class Home extends Component {
   }
 
   changeParking = (parking) => {
-    this.setState({currentParking: parking});
+    this.setState({ currentParking: parking });
   }
 
   //Mettre le card dans la map pour eviter de recharger la map à chaque fois
 
   render() {
     return (
+
       <div className="block">
+        <BarDeRecherche changeParking={this.changeParking} />
         <div className="columns">
           <div className="column">
-            <MapContainer changeParking={this.changeParking}/>
+            <MapContainer changeParking={this.changeParking} />
           </div>
           <div className="column is-4">
-            <Card currentParking = {this.state.currentParking}/>    
+            <Card currentParking={this.state.currentParking} />
           </div>
         </div>
       </div>
