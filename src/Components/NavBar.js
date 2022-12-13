@@ -4,6 +4,8 @@ import 'bulma/css/bulma.min.css';
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../Pages/sign_in/features/authSlice";
 import { NavLink, useNavigate } from "react-router-dom";
+import Home from "../Pages/Home";
+
 
 
 

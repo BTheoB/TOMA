@@ -3,10 +3,15 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import 'bulma/css/bulma.min.css';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-var parse = require('html-react-parser');
 
 
 export class MapContainer extends Component {
+
+  parkingInfoPopUp = (id) => {
+
+    this.props.changeParking(id);
+
+  }
 
 
   render() {
@@ -16,6 +21,29 @@ export class MapContainer extends Component {
       height: '65%',
       margin: '20px',
     }
+
+    //cette partie du code recupère la localisation actuelle de l'utilisateur afin de l'afficher
+    //Ne fonctionne pas du fait que la page est constament rechargé
+    
+    // var latcur= 45.78169339534074;
+    // var lngCur= 4.879089080629745;
+  
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(
+    //     (position) => {
+          
+    //         latcur= position.coords.latitude;
+    //         lngCur= position.coords.longitude;
+        
+    //     }
+    //   );
+    // }
+
+
+
+
+
+
     return (
       <div>
         <div className="block">
@@ -31,46 +59,28 @@ export class MapContainer extends Component {
           >
 
 
-            {/* <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} /> */}
+            {/* {<Marker position ={{latcur, lngCur}}
+                    name={'Current location'} />} */}
 
           
             {/* <Marker key={"LPA0764"} position={{ lat: 45.768522, lng: 4.83773 }} onClick={() => {parkingInfoPopUp("LPA0764")}} /> */}
             {loadMarkerParkingMap().map(parking =>(
-              <Marker key={parking["id"]} position={{ lat: parking["lat"], lng: parking["lon"] }} onClick={() => {parkingInfoPopUp(parking["id"])}} />
+              <Marker key={parking["id"]} position={{ lat: parking["lat"], lng: parking["lon"] }} onClick={() => {this.parkingInfoPopUp(parking["id"])}} />
             ))}
-            {/* <InfoWindow onClose={this.onInfoWindowClose}>
-                <div>
-                  <h1>{this.state.selectedPlace.name}</h1>
-                </div>
-            </InfoWindow> */}
           </Map>
         </div>
       </div>
+
+
     );
   }
 
+  
 
 }
 
 
-//En cours
-function parkingInfoPopUp(id) {
 
-
-  //Choses a afficher : 
-  //Le nombre de place dispo en temps réel => appel ajax
-  //L'adresse
-  //Capacité total
-  //Nom
-  //Photo
-
-  if (localStorage.getItem('resulatParkingsRealTime') != null && localStorage.getItem('FormatedTabParkingInfo') != null) {
-
-    let parkingsInfo = JSON.parse(localStorage.getItem('FormatedTabParkingInfo'));
-    console.log(parkingsInfo[id]["identifier"]);
-  }
-}
 
 
 //Initialise le tableau de parkings à afficher sur la map
