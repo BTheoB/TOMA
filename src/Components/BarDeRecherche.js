@@ -16,11 +16,11 @@ export class BarDeRecherche extends Component {
             if (research.length > 6 && localStorage.getItem('resulatParkingsRealTime') != null) {
                 let parkings = JSON.parse(localStorage.getItem('resulatParkingsRealTime'));
                 var i = 0;
-                while (i < parkings.length-1 && (parkings[i]["Parking_schema:name"] != research && parkings[i]["Parking_schema:identifier"] != research)) {
+                while (i < parkings.length-1 && (parkings[i]["Parking_schema:name"] !== research && parkings[i]["Parking_schema:identifier"] !== research)) {
                     i++;
                 }
                 
-                if( i == parkings.length-1 && (parkings[i]["Parking_schema:name"] != research && parkings[i]["Parking_schema:identifier"] != research)){
+                if( i === parkings.length-1 && (parkings[i]["Parking_schema:name"] !== research && parkings[i]["Parking_schema:identifier"] !== research)){
                     //On à pas trouver de parking donc nous ne faisons rien
                     document.getElementById("zone_recherche").classList.add("is-danger");
                     
@@ -43,8 +43,8 @@ export class BarDeRecherche extends Component {
                     Recherche
                 </button>
                 <datalist id="parking-list">
-                    {initList().map(parking => (
-                        <option id="parking">{parking}</option>
+                    {   initList().map(parking => (
+                        <option id={parking}>{parking}</option>
                     ))}
                 </datalist>
             </div>
@@ -56,19 +56,21 @@ export class BarDeRecherche extends Component {
 
 function initList() {
 
+    let returnVal = [];
+
     if (localStorage.getItem('resulatParkingsRealTime') != null) {
 
         let parkingsTempsReel = JSON.parse(localStorage.getItem('resulatParkingsRealTime'));
-    
-        let returnVal = [];
-    
+        
         parkingsTempsReel.forEach(parking => {
               
           returnVal.push(parking["Parking_schema:identifier"]);
           returnVal.push(parking["Parking_schema:name"]);
     
         });
-    
-        return returnVal;
+        
+        
       }
+      console.log(returnVal)
+      return returnVal;
 }

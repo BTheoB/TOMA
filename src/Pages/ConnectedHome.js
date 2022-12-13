@@ -45,8 +45,8 @@ class ConnectedHome extends Component {
     return (
 
       <div className="block">
-        <BarDeRecherche changeParking={this.changeParking} />
           <ConnectedNavBar />
+          <BarDeRecherche changeParking={this.changeParking} />
         <div className="columns">
           <div className="column">
             <MapContainer changeParking={this.changeParking} />
