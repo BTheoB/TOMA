@@ -36,17 +36,22 @@ export class BarDeRecherche extends Component {
 
 
         return (
-            <div class="control">
-
-                <input class="input is-normal" id="zone_recherche" type="text" placeholder="Quel parking cherchez-vous ?" list="parking-list" />
-                <button class="button is-primary" id="btn-lancer-recherche" type="button" onClick={handleChange} >
-                    Recherche
-                </button>
-                <datalist id="parking-list">
-                    {   initList().map(parking => (
-                        <option id={parking}>{parking}</option>
-                    ))}
-                </datalist>
+            <div class="box">
+                <div className="columns is-mobile">
+                    <div className="column">
+                        <input class="input is-normal" id="zone_recherche" type="text" placeholder="Quel parking cherchez-vous ?" list="parking-list" />
+                    </div>
+                    <div className="column">
+                        <button class="button is-primary" id="btn-lancer-recherche" type="button" onClick={handleChange} >
+                            Recherche
+                        </button>
+                        <datalist id="parking-list">
+                            {   initList().map(parking => (
+                                <option id={parking}>{parking}</option>
+                                ))}
+                        </datalist>
+                    </div>
+                </div>
             </div>
         );
     }
@@ -71,6 +76,5 @@ function initList() {
         
         
       }
-      console.log(returnVal)
       return returnVal;
 }

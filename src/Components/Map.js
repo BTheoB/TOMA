@@ -64,9 +64,9 @@ export class MapContainer extends Component {
 
           
             {/* <Marker key={"LPA0764"} position={{ lat: 45.768522, lng: 4.83773 }} onClick={() => {parkingInfoPopUp("LPA0764")}} /> */}
-            {loadMarkerParkingMap().map(parking =>(
+            {loadMarkerParkingMap().length == 0 ? loadMarkerParkingMap().map(parking =>(
               <Marker key={parking["id"]} position={{ lat: parking["lat"], lng: parking["lon"] }} onClick={() => {this.parkingInfoPopUp(parking["id"])}} />
-            ))}
+            )) : true}
           </Map>
         </div>
       </div>
