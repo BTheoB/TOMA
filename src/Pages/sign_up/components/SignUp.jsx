@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
 import axios from "axios";
+import 'bulma/css/bulma.min.css';
+
 
 
 const SignUp = () => {
@@ -34,8 +36,9 @@ const SignUp = () => {
   };
   return (
     <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">Add New User</h2>
+      <div className="box">
+        <h1 className="title">Sign up</h1>
+      </div>
       <div className="card is-shadowless">
         <div className="card-content">
           <div className="content">
