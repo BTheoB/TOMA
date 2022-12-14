@@ -76,6 +76,5 @@ function initList() {
         
         
       }
-      console.log(returnVal)
       return returnVal;
 }

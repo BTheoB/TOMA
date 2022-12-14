@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { LoginUser, reset } from "../features/authSlice";
+import React, { useState } from "react";
 import axios from "axios";
+<<<<<<< HEAD:src/Pages/sign_up/components/SignUp.jsx
 import 'bulma/css/bulma.min.css';
 
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> 802e05dfc868e11fd1e65de1f039ce9786f87275:src/Components/FormAddUser.js
 
-
-const SignUp = () => {
+const FormAddUser = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,7 +15,6 @@ const SignUp = () => {
   const [role, setRole] = useState("");
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
-
 
   const saveUser = async (e) => {
     e.preventDefault();
@@ -27,7 +26,7 @@ const SignUp = () => {
         confPassword: confPassword,
         role: role,
       });
-      navigate("/ConnectedHome");
+      navigate("/users");
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -121,4 +120,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default FormAddUser;
