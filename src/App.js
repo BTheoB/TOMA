@@ -7,6 +7,8 @@ import axios from "axios";
 import Login from "./Pages/sign_in/components/Login";
 import ConnectedHome from './Pages/ConnectedHome';
 import SignUp from './Pages/sign_up/components/SignUp';
+import Users from "./Pages/Users";
+import AddUser from "./Pages/AddUser";
 
 
 
@@ -150,7 +152,8 @@ function App() {
        <Route path="/Connection" element={<Login />} />
        <Route path="/ConnectedHome" element={<ConnectedHome />} />
        <Route path="/SignUp" element={<SignUp />} />
-
+       <Route path="/users" element={<Users />} />
+       <Route path="/users/add" element={<AddUser />} />
      </Routes>
   </div>
 }
