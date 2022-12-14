@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-// import React, {Component} from "react";
-import { useState } from 'react';
-import { useEffect } from 'react';
 import MapContainer from "../Components/Map";
 import "../App";
 import 'bulma/css/bulma.min.css';

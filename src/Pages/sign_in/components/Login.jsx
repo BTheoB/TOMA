@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
+import NavBar from "../../sign_up/components/HomeNavBar";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -26,13 +28,14 @@ const Login = () => {
 
   return (
     <section className="hero is-fullheight is-fullwidth">
+      <NavBar />
       <div className="hero-body">
         <div className="container">
           <div className="columns is-centered">
             <div className="column is-4">
               <form onSubmit={Auth} className="box">
                 {isError && <p className="has-text-centered">{message}</p>}
-                <h1 className="title is-2">Sign In</h1>
+                <h1 className="title is-2">Log In</h1>
                 <div className="field">
                   <label className="label">Email</label>
                   <div className="control">
