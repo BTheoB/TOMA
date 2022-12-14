@@ -30,8 +30,9 @@ const FormAddUser = () => {
   };
   return (
     <div>
-      <h1 className="title">Users</h1>
-      <h2 className="subtitle">Add New User</h2>
+      <div className="box">
+        <h1 className="title">Sign up</h1>
+      </div>
       <div className="card is-shadowless">
         <div className="card-content">
           <div className="content">
