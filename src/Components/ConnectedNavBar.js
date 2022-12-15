@@ -36,11 +36,11 @@ function ConnectedNavBar(){
                                 <a class="navbar-item">
                                     <strong><Link to="/ConnectedHome">Home</Link> </strong>
                                 </a>
-                                {user && user.role === "admin" && (
-                                        <a class="navbar-item">
+                                {/* {user && user.role === "admin" && ( */}
+                                        {/* <a class="navbar-item">
                                             <strong><Link to="/users"><IoPerson />Users</Link> </strong>
-                                        </a>
-                                )}     
+                                        </a> */}
+                                {/* )}      */}
                             </div>
                          </div>
 
