@@ -4,24 +4,24 @@
 
 cd backend/
 
-### `npm install`
+### 1 `npm install`
 
 Pour installer tous les dependences qui existent dans le fichier json 
 
-### `installer Wampserver `
+### 2 `installer Wampserver `
 
 Puis ouvrire phpMyAdmin et cliquer sur login de root, inutile d'ajouter un mot de passe 
 
-#### `creer bd "auth_db"`
+#### 2/1 `creer bd "auth_db"`
 
 Il faut bien nommer la base auth_db comme c'est le mème nom dans backend/config/Database.js
 
-### `de-commenter les fonctions async() et store.sync() dans backend/index.js`
+### 3 `de-commenter les fonctions async() et store.sync() dans backend/index.js`
 
-### `nodemon index`
+### 4 `nodemon index`
 il faut installer nodemon si ce n'est pas deja fait -> https://www.npmjs.com/package/nodemon
 
-### `remètre en commentaire les fonctions async() et store.sync() dans backend/index.js`
+### 5 `remètre en commentaire les fonctions async() et store.sync() dans backend/index.js`
 
 **Note: cette procédure (pour async() et store.sync()) est à faire une fois au début de la configuration du projet 
 
@@ -34,3 +34,4 @@ dans le ficher backend/request.rest : cliquer sur "Send Request" sous les commen
 #### // Update a user
 #### // delete a user
 #### // Login User
+Si dans le ficher response qui s'apparaitra à droite, dans la première ligne, c'est écrit "ok" alors il n'y a pas d'erreur par contre si c'est écrit "Bad Request" c'est à dire que l'exécution de cette requête a échoué
