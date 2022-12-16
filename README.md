@@ -34,4 +34,4 @@ dans le ficher backend/request.rest : cliquer sur "Send Request" sous les commen
 #### // Update a user
 #### // delete a user
 #### // Login User
-Si dans le ficher response qui s'apparaitra à droite, dans la première ligne, c'est écrit "ok" alors il n'y a pas d'erreur par contre si c'est écrit "Bad Request" c'est à dire que l'exécution de cette requête a échoué
+Si dans le ficher response qui s'apparaitra à droite, dans la première ligne, c'est écrit "ok"/"Created" alors il n'y a pas d'erreur par contre si c'est écrit "Bad Request" c'est à dire que l'exécution de cette requête a échoué
