@@ -16,6 +16,7 @@ const store = new sessionStore({
     db: db
 });
 
+// il faut decommenter cette fonction une foit au debut puis la remetre en commentaire
 // (async()=>{
 //     await db.sync();
 // })();
@@ -38,6 +39,7 @@ app.use(express.json());
 app.use(UserRoute);
 // app.use(AuthRoute);
 
+// il faut decommenter cette fonction une foit au debut puis la remetre en commentaire
 // store.sync();
 
 app.listen(process.env.APP_PORT, ()=> {
