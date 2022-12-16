@@ -45,4 +45,4 @@ cd TOMA/
 
 ### npm install 
 Une fois les dépendances sont bien installées
-il reste que commencer le programme sur la porte localhost:3000 par ### `npm start`
+il reste que commencer le programme sur la porte localhost:3000 par `npm start`
