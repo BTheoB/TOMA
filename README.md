@@ -1,4 +1,10 @@
-# Getting Started with TOMA 
+# Objectif
+
+Afin de répondre à notre sujet et à une problématique, nous avons décider de produire
+un outil permettant de connaître le nombre de place disponible dans des parkings de la
+ville de Lyon.
+
+# Installation  
 
 ## Pour faire fonctionner le backend il faut suivre les étapes suivantes par ordre 
 
