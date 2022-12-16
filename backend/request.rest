@@ -3,20 +3,20 @@ POST http://localhost:5000/users
 Content-Type: application/json
 
 {
-    "name": "Mfk",
-    "email": "admin@gmail.com",
-    "password": "123456",
-    "confPassword": "123456",
-    "role": "admin"
-}
-
-{
-    "name": "user1",
-    "email": "user1@gmail.com",
+    "name": "exemple",
+    "email": "user@gmail.com",
     "password": "123456",
     "confPassword": "123456",
     "role": "user"
 }
+
+# {
+#     "name": "user1",
+#     "email": "user1@gmail.com",
+#     "password": "123456",
+#     "confPassword": "123456",
+#     "role": "user"
+# }
 
 
 ###
@@ -33,10 +33,10 @@ PATCH http://localhost:5000/users/3cebb514-e31b-4e4f-9a53-b1cb795ae0fe
 Content-Type: application/json
 
 {
-    "name": "John updated",
-    "email": "John@gmail.com",
-    "password": "",
-    "confPassword": "",
+    "name": "exemple_updated",
+    "email": "user_updated@gmail.com",
+    "password": "123456",
+    "confPassword": "123456",
     "role": "user"
 }
 
@@ -50,7 +50,7 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email": "admin@gmail.com",
+    "email": "user@gmail.com",
     "password": "123456"
 }
 
